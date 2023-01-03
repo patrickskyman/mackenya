@@ -1,0 +1,14 @@
+{% extends "best.html" %}
+{% load search_tags %}
+
+{% load catalog_tags %}
+
+{% block content %}
+{% include "courses/course/home.html" %}
+{% include "homepage/brands.html" %}  
+{% product_list recently_viewed 'Your Recently Viewed' %}
+{% product_list view_recs 'Similar Products' %}
+{% include "homepage/bestdeals.html" %}
+{% product_list search_recs 'Recommended For You' %}
+{% include "homepage/shopbyneeds.html" %} 
+{% endblock %}

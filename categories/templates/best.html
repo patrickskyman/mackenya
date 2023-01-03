@@ -1,0 +1,390 @@
+{% load static %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% load search_tags %}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mackenya - Find laptop deals and gifts for you and friends</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <meta name='viewport', content='width=device-width, initial-scale=1.0'>
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/apple-touch-icon.png' %}">
+ 
+
+ 
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    
+   
+    <link href="{% static 'css/best.css' %}" rel="stylesheet">
+    <link href="{% static 'css/navbarstyle.css' %}" rel="stylesheet">
+    <link href="{% static 'css/categories.css' %}" rel="stylesheet">
+    <link href="{% static 'css/gsdk.css' %}" rel="stylesheet">
+    <link href="{% static 'css/beststylefresh.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'css/hovercard.css' %}" rel="stylesheet">
+    <link href="{% static 'css/plusminusnumber.css' %}" rel="stylesheet">
+    <link href="{% static 'css/product-grid.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pagination.css' %}" rel="stylesheet">
+    <link href="{% static 'css/prod-list.css' %}" rel="stylesheet">
+    <link href="{% static 'css/product-detail.css' %}" rel="stylesheet">
+    <link href="{% static 'css/slider.css' %}" rel="stylesheet">
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+    <link href="{% static 'css/carouseldetail.css' %}" rel="stylesheet">
+
+
+ 
+</head>
+<body>
+  <div class="navbar_verticale_large_screen">
+    <div class="main-navbar shadow-sm sticky-top">
+        <div class="top-navbar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2  my-auto d-none d-sm-none d-md-block d-lg-block">
+                        <strong class="logo"><h3><a href="/">Mackenya</a> </h3>
+                            <style>
+                                .logo {
+                                color: white;
+                                 height: 60px;
+                                 width: 11%;  
+                                } 
+                               </style>
+                        </strong>
+
+                    </div>
+                    <div class="col-md-5 my-auto">
+                        <form role="search" action="{% url "search_products" %}" method="GET" action="search">
+                            <div class="input-group">
+                                <input type="search" id="q" name="q" value="{{ request.GET.q }}" required="required" placeholder="Search your product" class="form-control"/>
+                                <button class="btn bg-white" type="submit">                                 
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class="col-md-5 my-auto">
+
+
+                      
+                        <ul class="nav justify-content-end">
+
+                            <li class="nav-item">
+                                <a class="nav-links" href="{% url "basket" %}">
+                                    <i class="fa fa-shopping-cart"></i> Cart ({{ request.basket.count }})
+                                </a>
+                            </li>
+                            {% if request.user.is_authenticated %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-links dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-user"></i> Username 
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url "address_list" %}"><i class="fa fa-user"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url "my-order" %}"><i class="fa fa-list"></i> My Orders</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-heart"></i> My Wishlist</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                                <li><a class="dropdown-item" href="{% url "logout" %}"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-links" href="{% url "login" %}">
+                                    <i class=""></i> Sign in
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-links" href="{% url "signup" %}">
+                                    <i class=""></i> Create account
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <div class="navbar_small_screen">
+      <div class="main-navbar shadow-sm sticky-top">
+        <div class="top-navbar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-1  my-auto d-none d-sm-none d-md-block d-lg-block">
+                        <div class="logo"><h3><a href="/">Mackenya</a> </h3>
+                            <style>
+                                .logo {
+                                color: white;
+                                 height: 60px;
+                                 width: 11%;  
+                                } 
+                               </style>
+                        </div>
+
+                    </div>
+                    <div class="col-md-5 my-auto">
+                        <form role="search" action="{% url "search_products" %}" method="GET" action="search">
+                            <div class="input-group">
+                                <input type="search" id="q" name="q" value="{{ request.GET.q }}" required="required" placeholder="Search your product" class="form-control"/>
+                                <button class="btn bg-white" type="submit">                                 
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class="col-md-5 my-auto">
+
+
+                      
+                        <ul class="nav justify-content-end">
+
+                          <div class="col-md-2">
+                            <strong class="logo"><h5><a href="/">Mackenya</a> </h3>
+                                <style>
+                                    .logo {
+                                    padding: auto;
+                                    color: white;
+                                     height: 60px;
+                                     width: 11%;  
+                                    } 
+                                   </style>
+                            </strong>
+    
+                        </div>                         
+                          
+                          
+                          
+
+                            <li class="nav-item">
+                                <a class="nav-links" href="{% url "basket" %}">
+                                    <i class="fa fa-shopping-cart"></i> Cart ({{ request.basket.count }})
+                                </a>
+                            </li>
+                            {% if request.user.is_authenticated %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-links dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-user"></i> Username 
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url "address_list" %}"><i class="fa fa-user"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url "my-order" %}"><i class="fa fa-list"></i> My Orders</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-heart"></i> My Wishlist</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                                <li><a class="dropdown-item" href="{% url "logout" %}"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-links" href="{% url "login" %}">
+                                    <i class=""></i> Sign in
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-links" href="{% url "signup" %}">
+                                    <i class=""></i> Create account
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+    {% include "homepage/categories.html" %}
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    
+    
+{% block breadcrumbs %}
+    {% clear_breadcrumbs %}
+    {% breadcrumb "Home" "/" %}
+{% endblock %}
+
+{% block content %}
+    {% render_breadcrumbs %}
+{% endblock %}
+    
+    <hr>
+  
+
+    <!-- Hot topics START -->
+
+
+<style>
+  .nav-link {
+    color: blue;
+    background-color: blue;
+
+  }
+
+  .nav-item {
+    color: blue;
+  }
+  .list-inline {
+    color: blue;
+  }
+
+</style>
+    <div class="row">
+      <h4>Shop by favorite brands <a class="all-deals"></h4>
+      <ul class="list-inline text-primary-hover lh-lg">
+        <li class="nav-item"><a class="nav-link" href="{% url "brand_apple" %}">Apple</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url "brand_hp" %}">HP</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url "brand_dell" %}">Dell</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url "brand_asus" %}">Samsung</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url "brand_samsung" %}">Asus</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url "brand_lenovo" %}">Lenovo</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url "brand_toshiba" %}">Toshiba</a></li>
+      </ul>
+    </div>
+    <!-- Hot topics END -->
+  </div>
+
+
+  <!-- Footer Widget -->
+
+<!-- Widgets END -->
+<footer class="blog-footer">
+    <div class="bg-dark pt-5">
+
+        <div class="container">
+          <div class="row">
+      
+            <div class="col-6 col-md">
+            <h5 class="mb-4 text-white">Navigation</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Contact us</a></li>
+                <li><a class="text-muted" href="#">Privacy policy</a></li>
+                <li><a class="text-muted" href="#">Support</a></li>
+                <li><a class="text-muted" href="#">Career</a></li>
+                <li><a class="text-muted" href="#">Another one</a></li>
+                <li><a class="text-muted" href="#">Last time</a></li>
+            </ul>
+            </div>
+            <div class="col-6 col-md">
+            <h5 class="mb-4 text-white">Updates</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Technology</a></li>
+                <li><a class="text-muted" href="#">Startups</a></li>
+                <li><a class="text-muted" href="#">Gadgets</a></li>
+                <li><a class="text-muted" href="#">Inspiration</a></li>
+            </ul>
+            </div>
+            <div class="col-6 col-md">
+            <h5 class="mb-4 text-white">Hot topics</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Opinion</a></li>
+                <li><a class="text-muted" href="#">Tech and Auto</a></li>
+                <li><a class="text-muted" href="#">Education</a></li>
+                <li><a class="text-muted" href="#">Terms</a></li>
+            </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+<br>
+    
+      <div class="row g-3">
+            <div class="col-4"> 
+              <a href="#" class="bg-facebook rounded text-center text-white-force p-3 d-block">
+                <i class="fab fa-facebook-square fs-5 mb-2"></i>
+                <h6 class="m-0">10.3K</h6>
+                <span class="small">Fans</span>
+              </a>
+            </div>
+            <div class="col-4">
+              <a href="#" class="bg-instagram-gradient rounded text-center text-white-force p-3 d-block">
+                <i class="fab fa-instagram fs-5 mb-2"></i>
+                <h6 class="m-0">1.1M</h6>
+                <span class="small">Followers</span>
+              </a>
+            </div>
+            <div class="col-4">
+              <a href="#" class="bg-youtube rounded text-center text-white-force p-3 d-block">
+                <i class="fab fa-youtube-square fs-5 mb-2"></i>
+                <h6 class="m-0">17K</h6>
+                <span class="small">Subs</span>
+              </a>
+            </div>
+          </div> 
+       
+          <!-- Social widget END -->
+      <!-- Links -->
+        <!-- Footer copyright START --> 
+
+    <br> </br>
+<div class="col-lg-12 site-footer">
+
+    <style>
+
+        .site-footer {
+            background-color: black;
+        }
+
+    </style>
+
+    <div class="row align-items-center justify-content-md-between py-4">
+      <div class="col-md-12">
+        <!-- Copyright -->
+        <div class="text-center text-md-start text-primary-hover text-muted">
+            <!-- Footer copyright END -->
+      <ul class="nav text-primary-hover text-center text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
+        <li class="nav-item"><a href="#">Terms</a></li>
+        <li class="nav-item"><a href="#">Privacy</a></li>
+        <li class="nav-item"><a href="#">Cookies</a></li>
+      </ul>
+        </div>
+
+        <br> </br>
+        <div class="text-center text-md-start text-primary-hover text-muted">
+          <ul class="nav text-primary-hover text-center text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
+          <li class="nav-item">@ {% now "Y" %} Mackenya Company, Inc</a></li>
+        </ul>
+        </div>
+      </div>
+      <div class="col-md-6 d-sm-flex align-items-center justify-content-center justify-content-md-end">      
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'javascripts/scripts.js' %}"></script>
+<script src="{% static 'javascripts/owl.js' %}"></script>
+<script src="{% static 'javascripts/addtocart.js' %}"></script>
+
+<script src="{% static 'javascripts/tiny-slider.js' %}"></script>
+<script src="{% static 'javascripts/sticky.min.js' %}"></script>
+<script src="{% static 'javascripts/function.js' %}"></script>
+</body>
+
+
+</html>

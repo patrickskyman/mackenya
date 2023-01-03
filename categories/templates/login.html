@@ -1,0 +1,18 @@
+{% extends "best.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<div class="container">
+  <h2>Login</h2>
+  <p>Please fill the form below.</p>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% include "includes/field.html" with field=form.email %}
+    {% include "includes/field.html" with field=form.password %}
+  <p> <button type="submit" class="btn btn-primary">Submit</button> </p> 
+  </form>
+</div>
+{% endblock content %}

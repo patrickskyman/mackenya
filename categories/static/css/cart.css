@@ -1,0 +1,9 @@
+.cart__button {
+    width: var(--header-height);
+    flex-shrink: 0;
+    float: left;
+    background: none;
+    outline: none;
+    border: none;
+    color: #ffffff;
+  }

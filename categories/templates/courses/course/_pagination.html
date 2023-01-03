@@ -1,0 +1,29 @@
+{% if products.paginator.count > 1 %} 
+<div class="pagination clearfix">
+    {% if products.has_previous %}
+    <a class="pagination-action" href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+    <i class="fa fa-angle-double-left" aria- hidden="true"></i>
+    </a>
+    <a class="pagination-action" href="?page={{ products.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+      </i>
+    <i class="fa fa-angle-left" aria-hidden="true"> </a>
+    {% endif %}
+    {% if products.paginator.num_pages > 1 %}
+    {% for num in products.paginator.page_range %} 
+    {% if products.number == num %}
+    <span class="pagination-number pagination-current">{{ num }}</span>
+    {% elif num > products.number|add:'-3' and num < products.number|add:'3' %}
+    <a class="pagination-number" href="?page={{num}} {% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ num }}</a>
+    {% endif %}
+    {% endfor %}
+{% endif %}
+{% if products.has_next %}
+<a class="pagination-action" href="?page={{products.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+<i class="fa fa-angle-right" aria- hidden="true"></i>
+</a>
+<a class="pagination-action" href="?page={{ products.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+<i class="fa fa-angle-double-right" aria- hidden="true"></i>
+</a>
+{% endif %}
+</div> 
+{% endif %}

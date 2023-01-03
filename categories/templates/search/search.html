@@ -1,0 +1,17 @@
+{% extends "best.html" %}
+
+{% block content %}
+
+<div class="container">
+{% if products %}
+    <p class="search-count">Found <strong>
+        {{ products.paginator.count }}
+        </strong> result{{ products.paginator.count|pluralize}}.</p>
+{% include "courses/course/_list.html" %}
+
+{% elif request.GET.q %}
+<p class="search-no-results">No results for "<strong>
+    {{request.GET.q}}</strong>"</p>
+{% endif %}
+</div>
+{% endblock %}

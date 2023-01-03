@@ -1,0 +1,31 @@
+{% load static %}
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+	
+<link href="{% static 'css/gsdk.css' %}" rel="stylesheet">
+
+
+  <style>
+  .b-23 {
+      padding-bottom: 10px;
+  }
+
+</style>
+
+<h3>
+  
+
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+<!--
+          <button class="btn btn-primary btn-round">Round</button>
+          <div> <ul><button href="#gsdk" class="btn btn-round btn-default">Automotives</button></ul></div>
+
+-->
+          {% for c in categories %}
+          <div> <ul><a class="btn btn-primary btn-round" href="{% url "product_list_category" c.slug %}">
+            {{ c.title }}</a> </ul></div>
+            {% endfor %}</a>
+        </nav>
+      </div>
+    </h3>
+  </div>

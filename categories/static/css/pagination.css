@@ -1,0 +1,30 @@
+.pagination {
+    text-align: center;
+    margin: 2em 0;
+  }
+  .pagination-number {
+    padding: 0.3em 0.8em;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #AFAFAF;
+  }
+  .pagination-number:hover {
+    background-color: #5EAEFD;
+  }
+  .pagination-current {
+    background-color: #5EAEFD;
+  }
+  .pagination-action {
+    margin: 0 0.1em;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    color: #B9B9B9;
+    font-size: 1.3em;
+  }
+  .pagination-action:hover {
+    color: #3354AA;
+  }
+  .pagination-previous, .pagination-next {
+    color: #3354AA;
+  }
+  

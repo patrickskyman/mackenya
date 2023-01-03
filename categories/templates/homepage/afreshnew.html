@@ -1,0 +1,73 @@
+{% load static %}
+<style>
+
+.card {
+    border: 1px solid #eee;
+    cursor: pointer
+}
+
+.text-center {
+   position: relative;
+   overflow:hidden;
+   height: 150px;
+}
+
+.text-center img {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+  object-fit: cover
+}
+  
+ </style> 
+
+
+      <!-- Recent post widget END -->
+             <!-- Section START -->
+              
+                <div class="container">
+                  <a class="all-deals" href="product/bestseller"><h3>Bestseller <i class="fa fa-angle-right icon"></i></a> </h3>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <!-- Title -->
+
+                      <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
+                        <div class="tiny-slider-inner"
+                          data-autoplay="true"
+                          data-hoverpause="true"
+                          data-gutter="24"
+                          data-arrow="true"
+                          data-dots="false"
+                          data-items-xl="5" 
+                          data-items-md="4" 
+                          data-items-sm="2.3" 
+                          data-items-xs="2">
+              
+                          <!-- Card item START -->
+                          {% for product in bestseller_products %}  
+                          <a href="{{ product.get_absolute_url }}">                   
+                              <div class="card p-3">
+                                <div class="position-relative">
+                                <div class="text-center"> 
+                                  {% for image in product.productimage_set.all %}
+                                  <img src="{{ image.image.url }}" alt="cover" width="200">
+                                  {% endfor %} 
+                                </div>
+                                <div class="product-details"> <span class="font-weight-bold d-block">Kes: {{ product.price }}</span> <span>{{ product.title }}</span>
+
+                                </div>
+                            </div>
+                          </div>
+                          </a> 
+                          <!-- Card item END -->
+                          {% endfor %}         
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- =======================
+      Section END -->

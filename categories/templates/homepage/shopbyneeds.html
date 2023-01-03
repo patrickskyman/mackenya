@@ -1,0 +1,73 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+
+
+<div class="container">
+  <h2>Shop by needs</h2>
+</div>
+<!--
+<style>
+
+.container-none {
+    background-color: chartreuse;
+   max-width: 900px;
+   max-height: 200px;
+
+}
+
+img {
+  border-radius: 50%;
+  max-width: 90px ;
+  max-height: 90px;
+
+}
+
+
+</style> -->
+<div class="container">
+  <div class="row center-text">
+
+    <div class="w4-container w4-red">
+    <div class="flex-wrapper">
+
+<div class="col-lg-3 sm-6">
+        <div class="card p-1">
+          <a href="{% url "brand_programminglaptops" %}">
+            <img class="" src="{% static 'images/laptopsforprogramming.jpg' %}" width="300" height="100" >
+          </a>
+        </div>
+      </div>
+
+<div class="col-lg-3 sm-6">
+  <div class="card p-1">
+    <a href="{% url "brand_businesslaptops" %}">
+      <img class="" src="{% static 'images/businesslaptops.jpg' %}" width="300" height="100" >
+    </a>
+  </div>
+</div>
+
+<div class="col-lg-3 sm-6">
+  <div class="card p-1">
+    <a href="">
+      <img class="" src="{% static 'images/laptopsforgraphicdesign.jpg' %}" width="300" height="100" >
+    </a>
+  </div>
+</div>
+
+<div class="col-lg-3 sm-6">
+  <div class="card p-1">
+    <a href="">
+      <img class="" src="{% static 'images/laptopsforgaming.jpg' %}" width="300" height="100" >
+    </a>
+  </div>
+</div>
+
+  </div>
+    </div>
+  </div>
+
+{% endblock %}
+    

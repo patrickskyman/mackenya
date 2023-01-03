@@ -1,0 +1,51 @@
+{% extends "best.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+
+    .card {
+        border: 1px solid #eee;
+        cursor: pointer
+    }
+    
+    .text-center {
+       position: relative;
+       overflow:hidden;
+       height: 150px;
+    }
+    
+    .text-center img {
+      position: absolute;
+      top:0;
+      left:0;
+      width: 100%;
+      height:100%;
+      object-fit: cover
+    }
+      
+     </style> 
+     
+<div class="container">
+    <h2>Hello: <strong>{{request.user}} </strong></h2>  
+
+    <a href="{% url "order_dashboard" %}">View orders</a> </p>
+    <h2>List of your addresses:</h2> 
+{% for address in object_list %}
+<p>
+<div class="card p-3">
+{{ address.name }}<br>
+{{ address.address1 }}<br>
+{{ address.address2 }}<br>
+{{ address.city }}<br>
+{{ address.get_country_display }}<br>
+</div>
+</p> 
+<p> <button type="submit" class="btn btn-primary"><a href="{% url "address_update" address.id %}">Update address</a></button> </p> 
+<p> <button type="submit" class="btn btn-primary"><a href="{% url "address_delete" address.id %}">Delete address</a></button> </p> 
+{% if not forloop.last %}
+<hr>
+{% endif %} {% endfor %}
+<p> <button type="submit" class="btn btn-primary"><a href="{% url "address_create" %}">Add new address</a></button> </p>
+</div>
+{% endblock content %}

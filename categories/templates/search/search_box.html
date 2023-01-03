@@ -1,0 +1,51 @@
+<form id="search" action="{% url "search_products" %}" method="get">
+    <h3><label for="id_q">Search</label></h3>
+    <div style="text-align:right;"> 
+    {{ form.q }}
+      <input type="submit" value="Search"/> 
+    </div>
+</form>
+
+
+
+<form action="{% url "search_products" %}" method="GET" id="search">
+  <button class="button-search"><i class="fas fa-search"></i></button>
+  <input id="q" name="q" value="{{ form.q }}" required="required" 
+  class="search-input" type="text" placeholder="Search...">
+</form> 
+
+<form action="{% url "search_products" %}" method="GET" action="search">
+  <button class="button-search"><i class="fas fa-search"></i></button>
+  <input id="q" name="q" value="{{ request.GET.q }}" required="required" 
+  class="search-input" type="text" placeholder="Search...">
+</form> 
+
+
+  <!--
+<form action="/search" method="GET" action="search">
+    <button class="button-search"><i class="fas fa-search"></i></button>
+    <input id="q" name="q" value="{{ request.GET.q }}" required="required" 
+    class="search-input" type="text" placeholder="Search...">
+  </form> 
+-->
+<form id="search" action="{% url "search_products" %}" method="get">
+  <div style="
+  display: block;
+  border-radius: 3px;
+    border: 1px solid #e1e1e1;
+    height: 30px;
+    padding: 0 0px 0 1px;
+    width: 35%;
+    background: white no-repeat;
+    transition: 100ms all linear 0s;
+    background-size: 0 2px, 100% 1px;
+    background-position: 50% 100%, 50% 100%;
+    transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    background-size: 100% 2px, 100% 1px;
+    outline: none;
+    
+  "> 
+  {{ form.q }}
+    <input type="submit" value="Search"/> 
+  </div>
+</form>

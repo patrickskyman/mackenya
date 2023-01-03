@@ -1,0 +1,41 @@
+{% extends "best.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="container">
+    <h2>Hello <strong>{{request.user}}</h2></strong>
+    {% for products,order in data %}
+
+ 
+  <div class="row">
+    <div class="col">
+      <table
+        class="table"
+        style="width: 95%; margin: 50px 0px 50px 0px">
+        <tr>
+          <th>Order date</th>
+          <th>Order id</th>
+          <th>Order Summary</th>
+          <th>Order Total Price</th>
+        </tr>
+          <tr>
+            <td>{{ order.date_added|date }}</td>
+            <td>{{ order.id }}</td>
+            <td>{{ order.summary }}</td>
+            <td>{{ order.total_price }}</td>
+          </tr>
+      </table>
+    </div>
+  </div>
+
+
+
+  {% empty %}
+You have no orders.
+  {% endfor %}
+</div>
+
+</div>
+<br><br><br><br><br>
+{% endblock content %}

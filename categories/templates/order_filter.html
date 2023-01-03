@@ -1,0 +1,21 @@
+{% extends "best.html" %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="container">
+  <div style="overflow-x:auto;">
+  <h2>Order dashboard</h2>
+
+  <h4>Welcome: {{ request.user }}</h3>
+
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <p>
+    {% render_table filter.qs %}
+  </p>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,135 @@
+{% extends "best.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+<div class="breadcrumbs">
+<a href="/">Home</a> &rsaquo;
+</div>
+</div>
+
+<div class="container">
+<form method="get">
+  {{ filter.form.as_p }}
+  <input type="submit" />
+</form>
+
+</div>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+ <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-wrapper > div {
+  width: 100%;
+  max-width: 25%;
+  padding: 10px;
+ 
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-wrapper > div {
+    max-width: 50%;
+  }
+}
+@media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+    }
+    
+.img-container {
+   position: relative;
+   overflow:hidden;
+   height: 150px;
+}
+
+.img-container img {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+  object-fit: cover
+}
+  </style>
+
+
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+
+<body>
+ 
+  <div class="container">
+  <h2>Best deals</h2>
+  </div>
+
+  <div class="container">
+    <div class="flex-wrapper">
+      {% for product in filter.qs %}   
+      <div class="col-md-3 col-sm-6">
+        <div class="product-grid">
+            <div class="product-image">
+              <a href="{{ product.get_absolute_url }}"> 
+              <div class="img-container">
+                {% for image in product.productimage_set.all %}
+                <img src="{{ image.image.url }}" alt="cover"/>
+                {% endfor %}
+              </div>
+            </a>
+
+
+           
+            </div>
+       
+            <ul class="rating">
+                <li class="fa fa-star"></li>
+                <li class="fa fa-star"></li>
+                <li class="fa fa-star"></li>
+                <li class="fa fa-star"></li>
+                <li class="fa fa-star disable"></li>
+            </ul>
+            <div class="product-content">
+                <h3 class="title"><a href="{{ product.get_absolute_url }}">  {{ product.title }}</a></h5>
+                <div class="price">Kes: {{ product.price }}
+                    <span>Kes: {{ product.old_price }}</span>
+                </div>
+                <a class="add-to-cart" href="{% url "add_to_basket" %}?product_id={{ product.id }}">  Add To Cart</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <ul>
+    <li><h2>No products yet. </h2></li>
+    </ul>
+        {% endfor %}
+
+    </div>
+    {% if products.paginator.num_pages > 1 %}
+    {% include 'courses/course/_pagination.html' with items=products %}
+    {% endif %}
+  </div> 
+{% endblock %}

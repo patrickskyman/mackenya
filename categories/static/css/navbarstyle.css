@@ -1,0 +1,17 @@
+@media (max-width: 767.98px) { 
+    .navbar_verticale_large_screen{
+      display:none;
+    }
+    .navbar_small_screen{
+      display:block;
+    }
+  }
+  
+  @media (min-width: 767.98px) { 
+    .navbar_verticale_large_screen{
+      display:block;
+    }
+    .navbar_small_screen{
+      display:none;
+    }
+  }

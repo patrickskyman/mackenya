@@ -1,0 +1,211 @@
+{% extends "categories.html" %} 
+{% load django_bootstrap_breadcrumbs %}
+
+
+{% load catalog_tags %}
+{% load static %}
+
+
+{% block breadcrumbs %}
+{{ block.super }}
+{% breadcrumb p "product_detail" p.title %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+<div class="breadcrumbs">
+<a href="/">Home</a> &rsaquo;
+</div>
+</div>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+	<div class="container top-w">
+
+			<div class="container-fluid">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						
+						<div class="preview-pic tab-content">
+
+                            <div class="tab-pane active" id="pic-1"> 
+                                 <div id="imagebox"></div>
+                                 
+<style type="text/css" media="screen"> 
+
+</style>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+ <script>
+const egg=React.createElement;
+class ImageBox extends React.Component{ 
+    constructor(props){
+    super(props); 
+    this.state = {
+    		currentImage: this.props.imageStart 
+                                        }
+       }
+          click(image){ 
+            this.setState({
+                  currentImage: image
+ });
+}
+            render(){
+              const images = this.props.images.map((i)=>
+                   egg('div', {className: "image", key: i.id}, 
+                   egg('img', {onClick: this.click.bind(this, i),
+                        width: "100",
+                        src: i.thumbnail}),
+ ), 
+);
+            return egg('div', {className: "gallery"}, 
+                   egg('div', {className: "current-image"},
+                   egg('img',{src: this.state.currentImage.image})
+), 
+                  images)
+} 
+}
+            document.addEventListener("DOMContentLoaded", function(event) {
+                const images = [
+                  {% for image in p.productimage_set.all %}
+                 {"image": "{{ image.image.url|safe }}", 
+                 "thumbnail": "{{ image.thumbnail.url|safe }}"},
+                {% endfor %}
+                  ]
+              ReactDOM.render(
+              egg(ImageBox, {images: images, imageStart: images[0]}),
+         	document.getElementById('imagebox') 
+     );
+});
+</script> 
+                                               
+<style>
+
+.image{
+      margin: 10px;
+      display: inline-block; 
+}
+/* category page styles */ 
+div.product_thumbnail{
+  text-align:center; 
+  float:left; 
+  width:100px; 
+  height:100px;
+  overflow-x:auto;
+}
+/* product page styles */ 
+div.product_image{
+  float:left;
+  width: auto;
+  height: auto;
+  padding:0 10px 10px 0; 
+}
+
+</style>                        
+        </div>
+				</div>		
+					</div>
+          
+					<div class="details col-md-6">
+            <h2 class="name">
+              {{ p.title }}
+          
+
+          </h2>
+          <hr />
+          <h3 class="price-container">
+              <h4>
+<br/> Current price: <span> Kes: {{ p.price }}</span></h4>
+              <small>*includes tax</small>
+          </h3>
+          <div class="certified">
+              <ul>
+                  <li>
+                      <a href="javascript:void(0);">Delivery time<span>24 hours</span></a>
+                  </li>
+                  <li>
+                      <a href="javascript:void(0);">Brand<span>{{ p.brand }}</span></a>
+                  </li>
+                  <li>
+                      <a href="javascript:void(0);">Quantity<span>{{ p.quantity }}</span></a>
+                  </li>
+                  <li>
+                      <a href="javascript:void(0);">SKU<span>{{ p.sku }}</span></a>
+                  </li>
+              </ul>
+          </div>
+          <hr>
+          <p> <button type="submit" class="btn btn-primary"><a href="{% url "add_to_basket" %}?product_id={{ p.id }}">Add to basket</a></button> </p> 
+         
+
+
+      </div>
+
+
+
+
+
+      <div class="container">
+   
+
+        {{ p.description|linebreaks }}
+ 
+      </div> 
+
+
+  </div>
+</div>
+<!-- end product -->
+</div>
+  </div>
+ 
+  <div class="container">
+   
+      <hr>
+      
+          </hr>
+        
+              <div class="description description-tabs">
+                  <ul id="myTab" class="nav nav-pills">
+                      <li class="active"><a href="#more-information" data-toggle="tab" class="no-margin">Product description </a></li>
+                      <li class=""><a href="#specifications" data-toggle="tab">Specifications</a></li>
+                      <li class=""><a href="#specifications" data-toggle="tab">Order</a></li>
+                  </ul>
+                  <div id="myTabContent" class="tab-content">
+                      <div class="tab-pane fade active in" id="more-information">
+                          <br />
+                        
+                          <p>
+                              <dd>
+                                {{ p.overview|safe}}
+                              </dd>
+                             
+                          </p>
+                      </div>
+                      <div class="tab-pane fade" id="specifications">
+                          <br />
+                          <dl class="">
+                              
+                              <dd>Please contact this number for delivery. To order by telephone, <a href="tel:+254">please call +25</a> mackenya.com</dd>
+                          </dl>
+                      </div>
+                      <div class="tab-pane fade" id="reviews">
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+
+  {% product_list view_recs 'Similar Products' %}
+
+  {% product_list recently_viewed 'Your Recently Viewed' %}
+  
+{% endblock %}

@@ -1,0 +1,52 @@
+{% load static %}
+{% block content %}
+<div class="container">
+  <h2>Popular brands</h2>
+
+<style>
+	/*/
+img {
+  border-radius: 50%;
+  max-width: 90px ;
+  max-height: 90px;
+
+}
+/*/
+
+</style>
+
+
+  
+
+<div class="container">
+    <div class="flex-wrapper">
+<style>
+  .img-circle {
+    float: right;
+  }
+</style>
+<div class="col-lg-3 sm-6">
+  <a href="{% url "brand_apple" %}">
+  <img class="img-circle" src="{% static 'images/apple.jpeg' %}" width="120" height="120" alt="apple logo">
+</a>
+</div>
+
+<div class="col-lg-3 sm-6">
+  <a href="{% url "brand_hp" %}">
+  <img class="img-circle" src="{% static 'images/hp.png' %}" width="120" height="120" alt="hp logo">
+</a>
+</div>
+
+  <div class="col-lg-3 sm-6">
+  <img class="img-circle" src="{% static 'images/dell.png' %}" width="120" height="120" alt="dell logo">
+</div>
+
+  <div class="col-lg-3 sm-6">
+  <img class="img-circle" src="{% static 'images/microsoft.png' %}" width="120" height="120" alt="microsoft logo">
+</div>
+</div>
+  </div>
+    </div>
+  </div>
+
+{% endblock %}

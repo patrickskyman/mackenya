@@ -1,0 +1,11 @@
+{% if product.has_other_pages %} {% if product.has_previous %}
+<a href="{{ request.path }}?{{ params }}&page={{ product.previous_page_number }}"> &laquo; Previous
+</a> {% else %}&laquo; Previous 
+{% endif %}
+| Page {{ product.number }} of {{ paginator.num_pages }} | 
+{% if product.has_next %}
+<a href="{{ request.path }}?{{ params }}&page={{ product.next_page_number }}"> 
+    Next &raquo;
+</a> {% else %}
+Next &raquo; {% endif %}
+{% endif %}
