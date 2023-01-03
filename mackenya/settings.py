@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader', # CKEditor media uploader
 ]
 
+#bsTUd$Mq=x18 bsTUd$Mq=x18
+
 ASGI_APPLICATION = 'mackenya.routing.application'
 
 #######TURN THIS OFF ON PRODUCTION MODE########################################
